@@ -1,11 +1,11 @@
-use advent_of_code_2025::{GridItem, load_grid};
+use advent_of_code_2025::{grid::GridItem, load_grid};
 
 fn main() {
     let grid = load_grid("input.txt");
 
     let mut valid_rolls = 0;
     for GridItem { col, row, .. } in grid.clone().into_iter() {
-        if let Some(v) = grid.get_neighbors(row, col)
+        if let Some(v) = grid.get_neighbors(row, col, |ch| ch == &'@')
             && v < 4
         {
             valid_rolls += 1;
@@ -21,7 +21,7 @@ fn main() {
         let mut to_remove = Vec::new();
 
         for GridItem { col, row, .. } in next_grid.clone().into_iter() {
-            if let Some(v) = next_grid.get_neighbors(row, col)
+            if let Some(v) = next_grid.get_neighbors(row, col, |ch| ch == &'@')
                 && v < 4
             {
                 to_remove.push((row, col));

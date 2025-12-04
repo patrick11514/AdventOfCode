@@ -1,7 +1,5 @@
 use std::{fs, path::Path};
 
-use rayon::iter::{ParallelBridge, ParallelIterator};
-
 fn main() {
     let solution = load_solution("input.txt");
     let res1: u128 = solution
@@ -13,7 +11,6 @@ fn main() {
 
     let res2: u128 = solution
         .into_iter()
-        //.par_bridge()
         .map(|line| find_biggest_combination(line, 12))
         .sum();
 
