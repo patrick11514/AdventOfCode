@@ -1,0 +1,8 @@
+#js files
+node_modules
+pnpm-lock.yaml
+.prettierrc
+
+#c files
+main
+*.o
