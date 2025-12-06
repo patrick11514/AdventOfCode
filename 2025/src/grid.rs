@@ -105,6 +105,14 @@ impl<T> Grid<T> {
 
         Some(count)
     }
+
+    pub fn get_row(&self, row: usize) -> Option<&Vec<T>> {
+        if row >= self.height {
+            None
+        } else {
+            Some(&self.data[row])
+        }
+    }
 }
 
 impl<T: PartialEq> Grid<T> {
