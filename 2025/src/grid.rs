@@ -70,6 +70,14 @@ impl<T> Grid<T> {
         }
     }
 
+    pub fn get_element_mut(&mut self, row: usize, col: usize) -> Option<&mut T> {
+        if row >= self.height || col >= self.width {
+            None
+        } else {
+            Some(&mut self.data[row][col])
+        }
+    }
+
     pub fn set_element(&mut self, row: usize, col: usize, value: T) {
         if row >= self.height || col >= self.width {
             return;
@@ -111,6 +119,14 @@ impl<T> Grid<T> {
             None
         } else {
             Some(&self.data[row])
+        }
+    }
+
+    pub fn get_row_mut(&mut self, row: usize) -> Option<&mut Vec<T>> {
+        if row >= self.height {
+            None
+        } else {
+            Some(&mut self.data[row])
         }
     }
 }
