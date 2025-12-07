@@ -129,6 +129,21 @@ impl<T> Grid<T> {
             Some(&mut self.data[row])
         }
     }
+
+    pub fn convert<N, F>(self, f: F) -> Grid<N>
+    where
+        F: Fn(T) -> N,
+    {
+        Grid {
+            data: self
+                .data
+                .into_iter()
+                .map(|row| row.into_iter().map(|e| f(e)).collect())
+                .collect(),
+            height: self.height,
+            width: self.width,
+        }
+    }
 }
 
 impl<T: PartialEq> Grid<T> {
