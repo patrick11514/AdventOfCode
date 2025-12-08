@@ -1,6 +1,6 @@
 use core::panic;
 
-use advent_of_code_2025::{grid::Grid, load_file, load_lines};
+use advent_of_code_2025::{grid::Grid, load_file};
 
 #[derive(Debug, Clone)]
 enum Operator {
