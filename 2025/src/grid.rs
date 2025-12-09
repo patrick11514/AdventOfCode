@@ -43,6 +43,12 @@ impl IntoGridInput<char> for String {
     }
 }
 
+impl IntoGridInput<char> for (usize, usize, char) {
+    fn to_grid(self) -> Vec<Vec<char>> {
+        vec![vec![self.2; self.0]; self.1]
+    }
+}
+
 impl<T> Grid<T> {
     pub fn new<I: IntoGridInput<T>>(input: I) -> Self {
         let data = input.to_grid();
